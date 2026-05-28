@@ -6,7 +6,7 @@ var auto_miner_level: int = 0
 var auto_miner_income: int = 1
 var click_power_price: int = 100
 var auto_miner_price: int = 200
-@export var bonus_resource: PackedScene
+@export var gem_scene: PackedScene
 
 @onready var hud: CanvasLayer = $Hud
 @onready var auto_miner: Timer = $AutoMiner
@@ -54,8 +54,9 @@ func _on_hud_auto_miner_purchased() -> void:
 
 
 func _on_bonus_timer_timeout() -> void:
-	var bonus = bonus_resource.instantiate()
+	var bonus = gem_scene.instantiate()
 
+	bonus.gem_data = GemTypes.pick_random()
 	bonus.bonus_clicked.connect(_on_bonus_clicked)
 
 	bonus_spawn_location.progress_ratio = randf()
@@ -72,6 +73,7 @@ func _on_bonus_timer_timeout() -> void:
 	add_child(bonus)
 
 	bonus_timer.wait_time = randf_range(3, 10)
+
 
 func _on_bonus_clicked(value: int) -> void:
 	money += value * (click_power + auto_miner_level)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wsi387hlm33j"]
 
 [ext_resource type="Script" uid="uid://b1t2g43ug28nw" path="res://scripts/main.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bu4xx6b4shyne" path="res://scenes/diamond.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" path="res://scenes/gem.tscn" id="2_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://xakuy20rvblw" path="res://scenes/hud.tscn" id="2_h2yge"]
 
 [sub_resource type="Curve2D" id="Curve2D_lquwl"]
@@ -12,7 +12,7 @@ point_count = 5
 
 [node name="Main" type="Node" unique_id=223469768]
 script = ExtResource("1_0xm2m")
-bonus_resource = ExtResource("2_1bvp3")
+gem_scene = ExtResource("2_1bvp3")
 
 [node name="Hud" parent="." unique_id=1393651292 instance=ExtResource("2_h2yge")]
 

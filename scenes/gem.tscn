@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://8rlixgo3lwau"]
+
+[ext_resource type="Script" uid="uid://j1nt8gs3k10h" path="res://scripts/gem.gd" id="1_p8xw3"]
+
+[node name="Gem" type="RigidBody2D" unique_id=800866190]
+collision_mask = 0
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_p8xw3")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1049634163]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1799990143]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=787341809]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
