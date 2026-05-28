@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://xakuy20rvblw"]
+
+[ext_resource type="Script" uid="uid://dbnnd080irm5r" path="res://scripts/hud.gd" id="1_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://bl767f4rxugii" path="res://icon.svg" id="2_640wx"]
+[ext_resource type="Script" uid="uid://cmo23dbiv4yxu" path="res://scripts/click_target.gd" id="3_a2258"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1393651292]
+script = ExtResource("1_8sq4i")
+
+[node name="ClickTarget" type="TextureButton" parent="." unique_id=1947999899]
+offset_left = 144.0
+offset_top = 240.0
+offset_right = 272.0
+offset_bottom = 368.0
+pivot_offset = Vector2(64, 64)
+texture_normal = ExtResource("2_640wx")
+script = ExtResource("3_a2258")
+
+[node name="Money" type="Label" parent="." unique_id=943022289]
+offset_left = 105.0
+offset_top = 11.0
+offset_right = 295.0
+offset_bottom = 39.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickPower" type="Button" parent="." unique_id=1054433722]
+offset_left = 2.0
+offset_top = 612.0
+offset_right = 113.0
+offset_bottom = 677.0
+text = "Click Power"
+
+[node name="AutoMiner" type="Button" parent="." unique_id=524129910]
+offset_left = 306.0
+offset_top = 613.0
+offset_right = 417.0
+offset_bottom = 678.0
+text = "Auto Miner"
+
+[connection signal="button_down" from="ClickTarget" to="ClickTarget" method="_on_button_down"]
+[connection signal="button_up" from="ClickTarget" to="ClickTarget" method="_on_button_up"]
+[connection signal="pressed" from="ClickTarget" to="." method="_on_click_target_pressed"]
+[connection signal="pressed" from="ClickPower" to="." method="_on_click_power_pressed"]
+[connection signal="pressed" from="AutoMiner" to="." method="_on_auto_miner_pressed"]

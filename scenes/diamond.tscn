@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bu4xx6b4shyne"]
+
+[ext_resource type="Script" uid="uid://dk7wg3yxqe3jl" path="res://scripts/diamond.gd" id="1_p8xw3"]
+
+[node name="Diamond" type="RigidBody2D" unique_id=746441929]
+collision_mask = 0
+input_pickable = true
+gravity_scale = 0.0
+script = ExtResource("1_p8xw3")
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1451645064]
+scale = Vector2(0.5, 0.5)
+color = Color(0.86091316, 0.17667574, 0, 1)
+polygon = PackedVector2Array(0, -50, 30, 0, 0, 50, -30, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=547601284]
+polygon = PackedVector2Array(0, -25, 15, 0, 0, 25, -15, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=394036510]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

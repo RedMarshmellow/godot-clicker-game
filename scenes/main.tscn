@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://wsi387hlm33j"]
+
+[ext_resource type="Script" uid="uid://b1t2g43ug28nw" path="res://scripts/main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bu4xx6b4shyne" path="res://scenes/diamond.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://xakuy20rvblw" path="res://scenes/hud.tscn" id="2_h2yge"]
+
+[sub_resource type="Curve2D" id="Curve2D_lquwl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 420, 0, 0, 0, 0, 0, 420, 680, 0, 0, 0, 0, 0, 680, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node" unique_id=223469768]
+script = ExtResource("1_0xm2m")
+bonus_resource = ExtResource("2_1bvp3")
+
+[node name="Hud" parent="." unique_id=1393651292 instance=ExtResource("2_h2yge")]
+
+[node name="AutoMiner" type="Timer" parent="." unique_id=415086415]
+
+[node name="BonusPath" type="Path2D" parent="." unique_id=1895667006]
+curve = SubResource("Curve2D_lquwl")
+
+[node name="BonusSpawnLocation" type="PathFollow2D" parent="BonusPath" unique_id=1634464553]
+
+[node name="BonusTimer" type="Timer" parent="." unique_id=911015088]
+autostart = true
+
+[connection signal="auto_miner_purchased" from="Hud" to="." method="_on_hud_auto_miner_purchased"]
+[connection signal="click_power_purchased" from="Hud" to="." method="_on_hud_click_power_purchased"]
+[connection signal="click_target_pressed" from="Hud" to="." method="_on_click_target_pressed"]
+[connection signal="timeout" from="AutoMiner" to="." method="_on_auto_miner_timeout"]
+[connection signal="timeout" from="BonusTimer" to="." method="_on_bonus_timer_timeout"]
